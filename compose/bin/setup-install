@@ -32,11 +32,6 @@ bin/clinotty bin/magento setup:install \
   --language="$MAGENTO_LOCALE" \
   --currency="$MAGENTO_CURRENCY" \
   --timezone="$MAGENTO_TIMEZONE" \
-  --amqp-host="$RABBITMQ_HOST" \
-  --amqp-port="$RABBITMQ_PORT" \
-  --amqp-user="$RABBITMQ_DEFAULT_USER" \
-  --amqp-password="$RABBITMQ_DEFAULT_PASS" \
-  --amqp-virtualhost="$RABBITMQ_DEFAULT_VHOST" \
   --cache-backend=redis \
   --cache-backend-redis-server="$REDIS_CACHE_BACKEND_SERVER" \
   --cache-backend-redis-db="$REDIS_CACHE_BACKEND_DB" \
@@ -55,3 +50,10 @@ bin/clinotty bin/magento setup:install \
   --use-rewrites=1 \
   --cleanup-database \
   --no-interaction
+
+# Add the following variables to the above argument list if you want to use rabbitmq connection
+#  --amqp-host="$RABBITMQ_HOST" \
+#  --amqp-port="$RABBITMQ_PORT" \
+#  --amqp-user="$RABBITMQ_DEFAULT_USER" \
+#  --amqp-password="$RABBITMQ_DEFAULT_PASS" \
+#  --amqp-virtualhost="$RABBITMQ_DEFAULT_VHOST" \
