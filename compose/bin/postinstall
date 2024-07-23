@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+if [ ! -z "$EVOZON_MODULES_REPOSITORY" ]; then
+echo "Installing Evozon modules, just a moment..."
+    composer require $EVOZON_MODULES_REPOSITORY
+    echo "Modules installed."
+fi

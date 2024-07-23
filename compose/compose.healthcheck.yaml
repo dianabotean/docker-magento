@@ -47,12 +47,12 @@ services:
   #    timeout: 5s
   #    retries: 30
 
-  rabbitmq:
-    healthcheck:
-      test: 'rabbitmq-diagnostics -q ping'
-      interval: 5s
-      timeout: 5s
-      retries: 30
+#  rabbitmq:
+#    healthcheck:
+#      test: 'rabbitmq-diagnostics -q ping'
+#      interval: 5s
+#      timeout: 5s
+#      retries: 30
 
   mailcatcher:
     healthcheck:
