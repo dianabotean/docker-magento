@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
+if [ ! -z "$M2SETUP_REPO" ]; then
+  echo "Adding external repositories, just a moment..."
+  bin/composer config repositories.repo-name git $M2SETUP_REPO
+else
+  echo "No external repositories found"
+fi
 
-if [ ! -z "$EVOZON_MODULES_REPOSITORY" ]; then
-echo "Installing Evozon modules, just a moment..."
-    composer require $EVOZON_MODULES_REPOSITORY
-    echo "Modules installed."
+if [ ! -z "$M2SETUP_REQUIRE" ]; then
+  echo "Installing external modules, just a moment..."
+  bin/composer require $M2SETUP_REQUIRE
+else
+  echo "No external modules found"
+fi
+
+if [ ! -z "$M2SETUP_REPO" ] || [ ! -z "$M2SETUP_REQUIRE" ]; then
+  echo "Running composer update"
+  bin/composer update
 fi
