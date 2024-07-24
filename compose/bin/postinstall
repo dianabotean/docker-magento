@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 
-if [ ! -z "$M2SETUP_REPO" ]; then
-  echo "Adding external repositories, just a moment..."
-  bin/composer config repositories.repo-name git $M2SETUP_REPO
-else
-  echo "No external repositories found"
-fi
+# External code configurations -> uncomment this block and change the vendor and module names accordingly
+#M2SETUP_REPO=git@github.com:<vendor>/<repo>.git
+#M2SETUP_REQUIRE=<vendor1>/<repo1> <vendor2>/<repo2>=<version> <vendor3>/<repo3>=branch
 
-if [ ! -z "$M2SETUP_REQUIRE" ]; then
-  echo "Installing external modules, just a moment..."
-  bin/composer require $M2SETUP_REQUIRE
-else
-  echo "No external modules found"
-fi
+M2SETUP_REPO="https://github.com/dianabotean/redirecttosku.git"
+M2SETUP_REQUIRE="dianabotean/redirecttosku"
+bin/composer config repositories.dianabotean-redirecttosku git $M2SETUP_REPO
+bin/composer require $M2SETUP_REQUIRE
+
+bin/copyfromcontainer --all
+bin/fixowns
+bin/fixperms
 
 if [ ! -z "$M2SETUP_REPO" ] || [ ! -z "$M2SETUP_REQUIRE" ]; then
-  echo "Running composer update"
-  bin/composer update
+  bin/magento setup:upgrade
+  bin/magento setup:di:compile
+  bin/magento setup:static-content:deploy
+  bin/magento cache:clean
 fi
