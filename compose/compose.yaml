@@ -54,7 +54,7 @@ services:
     command:
       --max_allowed_packet=64M
       --optimizer_use_condition_selectivity=1
-      --optimizer_switch="rowid_filter=off"
+#      --optimizer_switch="rowid_filter=off"
     ports:
       - "3306:3306"
     env_file: env/db.env
