@@ -10,6 +10,3 @@ curl -s https://raw.githubusercontent.com/dianabotean/docker-magento/local/lib/t
 # &&'s are used below otherwise onelinesetup script fails/errors after bin/download
 bin/download "${VERSION}" "${EDITION}" \
   && bin/setup "${DOMAIN}"
-
-echo "Running post installation scripts, please wait"
-bin/postinstall
