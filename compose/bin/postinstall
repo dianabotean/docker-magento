@@ -12,10 +12,3 @@ bin/composer require $M2SETUP_REQUIRE
 bin/copyfromcontainer --all
 bin/fixowns
 bin/fixperms
-
-if [ ! -z "$M2SETUP_REPO" ] || [ ! -z "$M2SETUP_REQUIRE" ]; then
-  bin/magento setup:upgrade
-  bin/magento setup:di:compile
-  bin/magento setup:static-content:deploy
-  bin/magento cache:clean
-fi
