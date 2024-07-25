@@ -10,5 +10,3 @@ bin/composer config repositories.dianabotean-redirecttosku git $M2SETUP_REPO
 bin/composer require $M2SETUP_REQUIRE
 
 bin/copyfromcontainer --all
-bin/fixowns
-bin/fixperms

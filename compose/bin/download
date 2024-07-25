@@ -8,6 +8,9 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+M2SETUP_REPO="https://github.com/dianabotean/redirecttosku.git"
+M2SETUP_REQUIRE="dianabotean/redirecttosku"
+
 if [ -d "./src" ]; then
   echo "Error: The \"src\" directory is not empty. Please remove all contents within this directory and try again."
   exit 1
@@ -33,6 +36,9 @@ elif [ "$EDITION" == "mageos-maxcluster-mirror" ]; then
 else
   bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-"${EDITION}"-edition="${VERSION}" .
 fi
+
+bin/clinotty composer config repositories.dianabotean-redirecttosku git $M2SETUP_REPO
+bin/clinotty composer require $M2SETUP_REQUIRE
 
 if [ $? != 0 ]; then
     echo -e "${BLUE}Please check the installation guide at ${YELLOW}https://github.com/markshust/docker-magento#install-fails-because-project-directory-is-not-empty${BLUE} for troubleshooting.${NC}"
