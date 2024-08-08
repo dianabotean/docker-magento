@@ -8,8 +8,9 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-M2SETUP_REPO="https://github.com/dianabotean/redirecttosku.git"
-M2SETUP_REQUIRE="dianabotean/redirecttosku"
+# Define external repositories requires
+M2SETUP_REPO="https://github.com/edituranemira/nemira-M2.git"
+M2SETUP_REQUIRE="edituranemira/nemira-m2:dev-master"
 
 if [ -d "./src" ]; then
   echo "Error: The \"src\" directory is not empty. Please remove all contents within this directory and try again."
@@ -37,7 +38,7 @@ else
   bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-"${EDITION}"-edition="${VERSION}" .
 fi
 
-bin/clinotty composer config repositories.dianabotean-redirecttosku git $M2SETUP_REPO
+bin/clinotty composer config repositories.evozon-nemira git $M2SETUP_REPO
 bin/clinotty composer require $M2SETUP_REQUIRE
 
 if [ $? != 0 ]; then
